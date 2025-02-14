@@ -46,6 +46,18 @@ COMMIT [ WORK | TRANSACTION ] [ AND [ NO ] CHAIN ]
    For more information regarding transactions see
    <xref linkend="tutorial-transactions"/>.
   </para>
+  <variablelist>
+  <varlistentry>
+   <term>Handling of Aborted Transactions</term>
+   <listitem>
+    <para>
+     When a transaction is aborted, PostgreSQL automatically rolls back any changes
+     made during the transaction. This ensures that the database remains in a
+     consistent state.
+    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
  </refsect1>
 
  <refsect1>

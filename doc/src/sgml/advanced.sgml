@@ -153,7 +153,18 @@ DETAIL:  Key (city)=(Berkeley) is not present in table "cities".
     occurs that prevents the transaction from completing,
     then none of the steps affect the database at all.
    </para>
-
+   <variablelist>
+    <varlistentry>
+     <term>Handling of Aborted Transactions</term>
+     <listitem>
+      <para>
+       When a transaction is aborted, PostgreSQL automatically rolls back any changes
+       made during the transaction. This ensures that the database remains in a
+       consistent state.
+    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
    <para>
     For example, consider a bank database that contains balances for various
     customer accounts, as well as total deposit balances for branches.
