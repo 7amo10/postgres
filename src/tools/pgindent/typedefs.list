@@ -157,6 +157,7 @@ ArrayType
 AsyncQueueControl
 AsyncQueueEntry
 AsyncRequest
+ATAlterConstraint
 AttInMetadata
 AttStatsSlot
 AttoptCacheEntry
@@ -371,6 +372,9 @@ CState
 CTECycleClause
 CTEMaterialize
 CTESearchClause
+CURL
+CURLM
+CURLoption
 CV
 CachedExpression
 CachedPlan
@@ -1619,6 +1623,7 @@ Material
 MaterialPath
 MaterialState
 MdfdVec
+MdPathStr
 Memoize
 MemoizeEntry
 MemoizeInstrumentation
@@ -1724,6 +1729,7 @@ NumericDigit
 NumericSortSupport
 NumericSumAccum
 NumericVar
+OAuthValidatorCallbacks
 OM_uint32
 OP
 OSAPerGroupState
@@ -1833,6 +1839,7 @@ PGVerbosity
 PG_Locale_Strategy
 PG_Lock_Status
 PG_init_t
+PGauthData
 PGcancel
 PGcancelConn
 PGcmdQueueEntry
@@ -1840,7 +1847,9 @@ PGconn
 PGdataValue
 PGlobjfuncs
 PGnotify
+PGoauthBearerRequest
 PGpipelineStatus
+PGpromptOAuthDevice
 PGresAttDesc
 PGresAttValue
 PGresParamDesc
@@ -1953,6 +1962,7 @@ PQArgBlock
 PQEnvironmentOption
 PQExpBuffer
 PQExpBufferData
+PQauthDataHook_type
 PQcommMethods
 PQconninfoOption
 PQnoticeProcessor
@@ -2164,7 +2174,6 @@ PgStat_KindInfo
 PgStat_LocalState
 PgStat_PendingDroppedStatsItem
 PgStat_PendingIO
-PgStat_PendingWalStats
 PgStat_SLRUStats
 PgStat_ShmemControl
 PgStat_Snapshot
@@ -2402,6 +2411,8 @@ RelMapFile
 RelMapping
 RelOptInfo
 RelOptKind
+RelPathStr
+RelStatsInfo
 RelToCheck
 RelToCluster
 RelabelType
@@ -2690,6 +2701,7 @@ SkipPages
 SlabBlock
 SlabContext
 SlabSlot
+SlotInvalidationCauseMap
 SlotNumber
 SlotSyncCtxStruct
 SlruCtl
@@ -3093,6 +3105,8 @@ VacuumRelation
 VacuumStmt
 ValidIOData
 ValidateIndexState
+ValidatorModuleState
+ValidatorModuleResult
 ValuesScan
 ValuesScanState
 Var
@@ -3490,6 +3504,7 @@ explain_get_index_name_hook_type
 f_smgr
 fasthash_state
 fd_set
+fe_oauth_state
 fe_scram_state
 fe_scram_state_enum
 fetch_range_request

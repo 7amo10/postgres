@@ -19475,7 +19475,7 @@ SELECT jt.* FROM
 SELECT jt.* FROM
  my_films,
  JSON_TABLE (js, '$.favorites[*] ? (@.films[*].director == $filter)'
-   PASSING 'Alfred Hitchcock' AS filter, 'Vertigo' AS filter2
+   PASSING 'Alfred Hitchcock' AS filter
      COLUMNS (
      id FOR ORDINALITY,
      kind text PATH '$.kind',
@@ -19562,13 +19562,13 @@ SELECT jt.* FROM
 <programlisting>
 SELECT * FROM JSON_TABLE (
 '{"favorites":
-    {"movies":
+    [{"movies":
       [{"name": "One", "director": "John Doe"},
        {"name": "Two", "director": "Don Joe"}],
      "books":
       [{"name": "Mystery", "authors": [{"name": "Brown Dan"}]},
        {"name": "Wonder", "authors": [{"name": "Jun Murakami"}, {"name":"Craig Doe"}]}]
-}}'::json, '$.favorites[*]'
+}]}'::json, '$.favorites[*]'
 COLUMNS (
   user_id FOR ORDINALITY,
   NESTED '$.movies[*]'
@@ -27991,6 +27991,11 @@ acl      | {postgres=arwdDxtm/postgres,foo=r/postgres}
        <entry><type>integer</type></entry>
       </row>
 
+      <row>
+       <entry><structfield>default_char_signedness</structfield></entry>
+       <entry><type>boolean</type></entry>
+      </row>
+
      </tbody>
     </tgroup>
    </table>
@@ -29369,6 +29374,10 @@ postgres=# SELECT '0/0'::pg_lsn + pd.segment_number * ps.setting::int + :offset 
         from the same <acronym>LSN</acronym> as the source logical slot.  Both
         <parameter>temporary</parameter> and <parameter>plugin</parameter> are
         optional; if they are omitted, the values of the source slot are used.
+        The <literal>failover</literal> option of the source logical slot
+        is not copied and is set to <literal>false</literal> by default. This
+        is to avoid the risk of being unable to continue logical replication
+        after failover to standby where the slot is being synchronized.
        </para></entry>
       </row>
 
@@ -30246,14 +30255,6 @@ postgres=# SELECT '0/0'::pg_lsn + pd.segment_number * ps.setting::int + :offset 
          change from version to version, so the primary purpose of this
          function is to maintain a consistent function signature to avoid
          errors when restoring statistics from previous versions.
-        </para>
-        <para>
-         To match the behavior of <xref linkend="sql-vacuum"/> and <xref
-         linkend="sql-analyze"/> when updating relation statistics,
-         <function>pg_restore_relation_stats()</function> does not follow MVCC
-         transactional semantics (see <xref linkend="mvcc"/>). New relation
-         statistics may be durable even if the transaction aborts, and the
-         changes are not isolated from other transactions.
         </para>
         <para>
          Arguments are passed as pairs of <replaceable>argname</replaceable>
